@@ -90,7 +90,7 @@ public class Frame extends javax.swing.JFrame {
       this.iCurrentTicket = iCurrentTicket;
       showTicket(iCurrentTicket);
       stateControls(States.STATE_DOWNLOADED);
-      JOptionPane.showMessageDialog(this, "Downloaded information of " + tickets.size() + " Tickets", "Info", JOptionPane.INFORMATION_MESSAGE, 
+      JOptionPane.showMessageDialog(this, "Se recuperó la información de " + tickets.size() + " Tickets", "Info", JOptionPane.INFORMATION_MESSAGE, 
             new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Download from the Cloud.png")));
       
     } catch (UnknownHostException ex) {
@@ -219,7 +219,7 @@ public class Frame extends javax.swing.JFrame {
 
     jLabel3.setText("Ticket ID");
 
-    jLabel4.setText("Problem Reported");
+    jLabel4.setText("Problema Reportado");
 
     jTicketid.setToolTipText("");
     jTicketid.setDisabledTextColor(java.awt.SystemColor.textInactiveText);
@@ -231,7 +231,7 @@ public class Frame extends javax.swing.JFrame {
     jProblemreported.setEnabled(false);
     jScrollPane2.setViewportView(jProblemreported);
 
-    jLabel5.setText("Previous Assignment Group ");
+    jLabel5.setText("Grupo asignado previamente");
 
     jPreviousassigmentgroup.setDisabledTextColor(java.awt.SystemColor.textInactiveText);
     jPreviousassigmentgroup.setEnabled(false);
@@ -241,7 +241,7 @@ public class Frame extends javax.swing.JFrame {
       }
     });
 
-    jLabel6.setText("Type of Solution ");
+    jLabel6.setText("Tipo de Solución");
 
     jTypeofsolution.setColumns(20);
     jTypeofsolution.setRows(5);
@@ -249,24 +249,24 @@ public class Frame extends javax.swing.JFrame {
     jTypeofsolution.setEnabled(false);
     jScrollPane4.setViewportView(jTypeofsolution);
 
-    jLabel14.setText("Solved Date");
+    jLabel14.setText("Fecha de Resolución");
 
     jSolveddate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d/M/yyyy"))));
     jSolveddate.setDisabledTextColor(java.awt.SystemColor.textInactiveText);
     jSolveddate.setEnabled(false);
 
-    jLabel15.setText("Solved By");
+    jLabel15.setText("Resuelto por");
 
     jSolvedby.setDisabledTextColor(java.awt.SystemColor.textInactiveText);
     jSolvedby.setEnabled(false);
 
-    jLabel16.setText("Reported Date");
+    jLabel16.setText("Fecha de Reporte");
 
     jReporteddate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d/M/yyyy"))));
     jReporteddate.setDisabledTextColor(java.awt.SystemColor.textInactiveText);
     jReporteddate.setEnabled(false);
 
-    jLabel17.setText("Category");
+    jLabel17.setText("Categoria");
 
     jCategory.setDisabledTextColor(java.awt.SystemColor.textInactiveText);
     jCategory.setEnabled(false);
@@ -318,7 +318,7 @@ public class Frame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
               .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
               .addComponent(jTicketid))))
-        .addContainerGap(503, Short.MAX_VALUE))
+        .addContainerGap(529, Short.MAX_VALUE))
     );
     jPanel2Layout.setVerticalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,7 +358,7 @@ public class Frame extends javax.swing.JFrame {
         .addContainerGap(18, Short.MAX_VALUE))
     );
 
-    jTabContacts.addTab("General Info", jPanel2);
+    jTabContacts.addTab("Información General", jPanel2);
 
     jStepstosolveit.setColumns(20);
     jStepstosolveit.setRows(5);
@@ -366,7 +366,7 @@ public class Frame extends javax.swing.JFrame {
     jStepstosolveit.setEnabled(false);
     jScrollPane1.setViewportView(jStepstosolveit);
 
-    jLabel18.setText("Average hrs to solve it");
+    jLabel18.setText("Promedio de horas empleadas");
 
     jAveragehrs.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
     jAveragehrs.setToolTipText("");
@@ -379,7 +379,7 @@ public class Frame extends javax.swing.JFrame {
       .addGroup(jPanel3Layout.createSequentialGroup()
         .addContainerGap()
         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1275, Short.MAX_VALUE)
+          .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1304, Short.MAX_VALUE)
           .addGroup(jPanel3Layout.createSequentialGroup()
             .addGap(6, 6, 6)
             .addComponent(jLabel18)
@@ -400,17 +400,19 @@ public class Frame extends javax.swing.JFrame {
         .addContainerGap(26, Short.MAX_VALUE))
     );
 
-    jTabContacts.addTab("Steps to solve it", jPanel3);
+    jLabel18.getAccessibleContext().setAccessibleName("Promedio de horas empleadas");
 
-    jLabel7.setText("Script, Query or Tool used for Solution (Solution artifact) ");
+    jTabContacts.addTab("Pasos para resolver el Ticket", jPanel3);
+
+    jLabel7.setText("Script, Query o Herramienta utilizada (Solution artifact) ");
 
     jScriptusedforsolution.setDisabledTextColor(java.awt.SystemColor.textInactiveText);
     jScriptusedforsolution.setEnabled(false);
 
-    jLabel8.setText("Solution Artifact shared? ");
+    jLabel8.setText("¿Nos comparten el Script, Query o la Herramienta?");
 
     buttonGroup1.add(jSolutionartifactsharedSi);
-    jSolutionartifactsharedSi.setText("Yes");
+    jSolutionartifactsharedSi.setText("Sí");
     jSolutionartifactsharedSi.setToolTipText("");
     jSolutionartifactsharedSi.setEnabled(false);
     jSolutionartifactsharedSi.addActionListener(new java.awt.event.ActionListener() {
@@ -455,7 +457,7 @@ public class Frame extends javax.swing.JFrame {
             .addComponent(jSolutionartifactsharedNo)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(jSolutionartifactsharedNA)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 698, Short.MAX_VALUE)))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 744, Short.MAX_VALUE)))
         .addGap(124, 124, 124))
     );
     jPanel4Layout.setVerticalGroup(
@@ -476,9 +478,9 @@ public class Frame extends javax.swing.JFrame {
 
     jLabel7.getAccessibleContext().setAccessibleDescription("");
 
-    jTabContacts.addTab("Script used", jPanel4);
+    jTabContacts.addTab("Script utilizado", jPanel4);
 
-    jLabel9.setText("Other Support Teams contacted ");
+    jLabel9.setText("Otros equipos de soporte contactados");
 
     jOthersupportteams.setColumns(20);
     jOthersupportteams.setRows(5);
@@ -486,7 +488,7 @@ public class Frame extends javax.swing.JFrame {
     jOthersupportteams.setEnabled(false);
     jScrollPane3.setViewportView(jOthersupportteams);
 
-    jLabel10.setText("Grupo Bimbo resources contacted ");
+    jLabel10.setText("Recursos de Grupo BIMBO contactados");
 
     jResourcescontacted.setColumns(20);
     jResourcescontacted.setRows(5);
@@ -505,7 +507,7 @@ public class Frame extends javax.swing.JFrame {
           .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
         .addGap(18, 18, 18)
         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 897, Short.MAX_VALUE)
+          .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 899, Short.MAX_VALUE)
           .addComponent(jScrollPane5))
         .addGap(164, 164, 164))
     );
@@ -523,12 +525,12 @@ public class Frame extends javax.swing.JFrame {
         .addContainerGap(252, Short.MAX_VALUE))
     );
 
-    jTabContacts.addTab("Contacts Info", jPanel5);
+    jTabContacts.addTab("Contactos", jPanel5);
 
-    jLabel11.setText("Escalation required? ");
+    jLabel11.setText("¿Se requirió Escalamiento?");
 
     buttonGroup2.add(jEscalationrequiredSi);
-    jEscalationrequiredSi.setText("Yes");
+    jEscalationrequiredSi.setText("Sí");
     jEscalationrequiredSi.setEnabled(false);
     jEscalationrequiredSi.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -545,7 +547,7 @@ public class Frame extends javax.swing.JFrame {
       }
     });
 
-    jLabel12.setText("Escalation process applied ");
+    jLabel12.setText("Proceso de Escalamiento aplicado");
 
     jEscalationprocess.setColumns(20);
     jEscalationprocess.setRows(5);
@@ -553,10 +555,10 @@ public class Frame extends javax.swing.JFrame {
     jEscalationprocess.setEnabled(false);
     jScrollPane6.setViewportView(jEscalationprocess);
 
-    jLabel13.setText("Change Request needed? ");
+    jLabel13.setText("¿Se requirió una solicitud de cambio?");
 
     buttonGroup3.add(jChangerequestneededSi);
-    jChangerequestneededSi.setText("Yes");
+    jChangerequestneededSi.setText("Sí");
     jChangerequestneededSi.setEnabled(false);
 
     buttonGroup3.add(jChangerequestneededNo);
@@ -583,7 +585,7 @@ public class Frame extends javax.swing.JFrame {
             .addComponent(jScrollPane6)
             .addGap(306, 306, 306))))
       .addGroup(jPanel6Layout.createSequentialGroup()
-        .addGap(52, 52, 52)
+        .addGap(26, 26, 26)
         .addComponent(jLabel13)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addComponent(jChangerequestneededSi)
@@ -612,14 +614,14 @@ public class Frame extends javax.swing.JFrame {
         .addContainerGap(306, Short.MAX_VALUE))
     );
 
-    jTabContacts.addTab("Escalation", jPanel6);
+    jTabContacts.addTab("Escalamiento", jPanel6);
 
     jToolBar2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
     jToolBar2.setFloatable(false);
     jToolBar2.setRollover(true);
 
     jNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Document.png"))); // NOI18N
-    jNew.setToolTipText("New");
+    jNew.setToolTipText("Nuevo Ticket");
     jNew.setEnabled(false);
     jNew.setFocusable(false);
     jNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -632,7 +634,7 @@ public class Frame extends javax.swing.JFrame {
     jToolBar2.add(jNew);
 
     jSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Save.png"))); // NOI18N
-    jSave.setToolTipText("Save");
+    jSave.setToolTipText("Guardar Ticket");
     jSave.setEnabled(false);
     jSave.setFocusable(false);
     jSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -645,7 +647,7 @@ public class Frame extends javax.swing.JFrame {
     jToolBar2.add(jSave);
 
     jDuplicate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Copy.png"))); // NOI18N
-    jDuplicate.setToolTipText("Duplicate");
+    jDuplicate.setToolTipText("Duplicar información del Ticket");
     jDuplicate.setEnabled(false);
     jDuplicate.setFocusable(false);
     jDuplicate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -658,7 +660,7 @@ public class Frame extends javax.swing.JFrame {
     jToolBar2.add(jDuplicate);
 
     jEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Edit.png"))); // NOI18N
-    jEdit.setToolTipText("Edit");
+    jEdit.setToolTipText("Editar Ticket");
     jEdit.setEnabled(false);
     jEdit.setFocusable(false);
     jEdit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -671,7 +673,7 @@ public class Frame extends javax.swing.JFrame {
     jToolBar2.add(jEdit);
 
     jCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Cancel.png"))); // NOI18N
-    jCancel.setToolTipText("Cancel");
+    jCancel.setToolTipText("Cancelar");
     jCancel.setEnabled(false);
     jCancel.setFocusable(false);
     jCancel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -684,7 +686,7 @@ public class Frame extends javax.swing.JFrame {
     jToolBar2.add(jCancel);
 
     jDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Delete.png"))); // NOI18N
-    jDelete.setToolTipText("Delete");
+    jDelete.setToolTipText("Eliminar Ticket");
     jDelete.setEnabled(false);
     jDelete.setFocusable(false);
     jDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -697,7 +699,7 @@ public class Frame extends javax.swing.JFrame {
     jToolBar2.add(jDelete);
     jToolBar2.add(jSeparator2);
 
-    jRegEx.setToolTipText("Text (RegEx) to search");
+    jRegEx.setToolTipText("Texto a buscar (RegEx)");
     jRegEx.setEnabled(false);
     jRegEx.addKeyListener(new java.awt.event.KeyAdapter() {
       public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -707,7 +709,7 @@ public class Frame extends javax.swing.JFrame {
     jToolBar2.add(jRegEx);
 
     jWhere.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Search in...", "-", "Ticket ID", "Problem reported", "Category", "Reported date", "Previous assigment group", "Type of solution", "Solved date", "Solved by", "Steps to solve it", "Script used for solution", "Other support teams", "Resources contacted", "Escalation process" }));
-    jWhere.setToolTipText("Search in...");
+    jWhere.setToolTipText("Buscar en...");
     jWhere.setEnabled(false);
     jWhere.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -717,7 +719,7 @@ public class Frame extends javax.swing.JFrame {
     jToolBar2.add(jWhere);
 
     jFind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Search.png"))); // NOI18N
-    jFind.setToolTipText("Search");
+    jFind.setToolTipText("Buscar");
     jFind.setEnabled(false);
     jFind.setFocusable(false);
     jFind.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -731,7 +733,7 @@ public class Frame extends javax.swing.JFrame {
     jToolBar2.add(jSeparator5);
 
     jExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Export.png"))); // NOI18N
-    jExport.setToolTipText("Export to Excel");
+    jExport.setToolTipText("Exportar a Excel");
     jExport.setEnabled(false);
     jExport.setFocusable(false);
     jExport.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -744,7 +746,7 @@ public class Frame extends javax.swing.JFrame {
     jToolBar2.add(jExport);
 
     jDownload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Download from the Cloud.png"))); // NOI18N
-    jDownload.setToolTipText("Download all Tickets");
+    jDownload.setToolTipText("Descargar la información de los Tickets");
     jDownload.setEnabled(false);
     jDownload.setFocusable(false);
     jDownload.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -758,7 +760,7 @@ public class Frame extends javax.swing.JFrame {
     jToolBar2.add(jSeparator1);
 
     jFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Previous.png"))); // NOI18N
-    jFirst.setToolTipText("First");
+    jFirst.setToolTipText("Primero");
     jFirst.setEnabled(false);
     jFirst.setFocusable(false);
     jFirst.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -771,7 +773,7 @@ public class Frame extends javax.swing.JFrame {
     jToolBar2.add(jFirst);
 
     jPrevious.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Previous.png"))); // NOI18N
-    jPrevious.setToolTipText("Previous");
+    jPrevious.setToolTipText("Anterior");
     jPrevious.setEnabled(false);
     jPrevious.setFocusable(false);
     jPrevious.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -784,7 +786,7 @@ public class Frame extends javax.swing.JFrame {
     jToolBar2.add(jPrevious);
 
     jNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Next.png"))); // NOI18N
-    jNext.setToolTipText("Next");
+    jNext.setToolTipText("Siguiente");
     jNext.setEnabled(false);
     jNext.setFocusable(false);
     jNext.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -797,7 +799,7 @@ public class Frame extends javax.swing.JFrame {
     jToolBar2.add(jNext);
 
     jLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Next.png"))); // NOI18N
-    jLast.setToolTipText("Last");
+    jLast.setToolTipText("Último");
     jLast.setEnabled(false);
     jLast.setFocusable(false);
     jLast.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -810,14 +812,14 @@ public class Frame extends javax.swing.JFrame {
     jToolBar2.add(jLast);
 
     jConnect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Disconnected.png"))); // NOI18N
-    jConnect.setToolTipText("Connect to DB Tickets");
+    jConnect.setToolTipText("Conectar a la BD Tickets");
     jConnect.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         jConnectActionPerformed(evt);
       }
     });
 
-    jRecords.setText("( - of - Registers)");
+    jRecords.setText("( - de - Registros)");
     jRecords.setEnabled(false);
 
     jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -840,9 +842,9 @@ public class Frame extends javax.swing.JFrame {
       .addComponent(jLabel1)
     );
 
-    jHelp.setText("Help");
+    jHelp.setText("Ayuda");
 
-    jAbout.setText("About...");
+    jAbout.setText("Acerca de...");
     jAbout.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         jAboutActionPerformed(evt);
@@ -956,7 +958,7 @@ public class Frame extends javax.swing.JFrame {
   }//GEN-LAST:event_jRegExKeyPressed
 
   private void jAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAboutActionPerformed
-    JOptionPane.showMessageDialog(this, "   adrian.gallardo@capgemini.com\n   December 2016\n\n", "About", JOptionPane.INFORMATION_MESSAGE, 
+    JOptionPane.showMessageDialog(this, "   adrian.gallardo@capgemini.com\n   Diciembre 2016\n\n", "Acerca de...", JOptionPane.INFORMATION_MESSAGE, 
             new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Form.png"))); 
   }//GEN-LAST:event_jAboutActionPerformed
 
@@ -1129,17 +1131,17 @@ public class Frame extends javax.swing.JFrame {
     if(jSolutionartifactsharedNA.isSelected()){
       sSolutionartifactshared = "N/A";
     }else{
-      sSolutionartifactshared = (jSolutionartifactsharedSi.isSelected())? "Yes":"No"; 
+      sSolutionartifactshared = (jSolutionartifactsharedSi.isSelected())? "Sí":"No"; 
     }    
     sOthersupportteams = jOthersupportteams.getText().trim();
     sResourcescontacted = jResourcescontacted.getText().trim();
-    sEscalationrequired = (jEscalationrequiredSi.isSelected())? "Yes":"No";
+    sEscalationrequired = (jEscalationrequiredSi.isSelected())? "Sí":"No";
     sEscalationprocess = jEscalationprocess.getText().trim();
-    sChangerequestneeded = (jChangerequestneededSi.isSelected())? "Yes":"No";
+    sChangerequestneeded = (jChangerequestneededSi.isSelected())? "Sí":"No";
     sSolvedby = jSolvedby.getText().trim();
     
     if(sTicketid.equals("")){
-      JOptionPane.showMessageDialog(this, "Please enter the Ticket ID", "Info", JOptionPane.ERROR_MESSAGE, 
+      JOptionPane.showMessageDialog(this, "Introduce el Ticket ID", "Info", JOptionPane.ERROR_MESSAGE, 
             new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Error.png")));     
       jTicketid.requestFocus();
       
@@ -1185,7 +1187,7 @@ public class Frame extends javax.swing.JFrame {
       }
 
       if(!exception){
-        JOptionPane.showMessageDialog(this, "The Ticket info has been saved\n\n", "Info", JOptionPane.INFORMATION_MESSAGE, 
+        JOptionPane.showMessageDialog(this, "Ticket guardado\n\n", "Info", JOptionPane.INFORMATION_MESSAGE, 
               new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Save Close.png")));
         if(!update){
           tickets.add(new Ticket(sTicketid, sProblemreported, sCategory, sPreviousassigmentgroup, 
@@ -1221,14 +1223,14 @@ public class Frame extends javax.swing.JFrame {
         }
         stateControls(States.STATE_RELOADED);
       }else{
-        JOptionPane.showMessageDialog(this, "Connection ERROR. Can't save the Ticket Info", "Info", JOptionPane.ERROR_MESSAGE, 
+        JOptionPane.showMessageDialog(this, "Error de conexión. No se pudo recuperar la información del Ticket", "Info", JOptionPane.ERROR_MESSAGE, 
               new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Disconnected.png")));
       }
     }
   }  
 
   private void deleteDocument() {
-    int iRes = JOptionPane.showConfirmDialog(this, "The Ticket info will be deleted.\n\n ¿Do you want to proceed?\n\n", "Info", JOptionPane.OK_CANCEL_OPTION,
+    int iRes = JOptionPane.showConfirmDialog(this, "El Ticket actual será eliinado.\n\n ¿Deseas continuar?\n\n", "Info", JOptionPane.OK_CANCEL_OPTION,
             JOptionPane.QUESTION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Help.png")));
     
     if(iRes==JOptionPane.OK_OPTION){
@@ -1251,13 +1253,13 @@ public class Frame extends javax.swing.JFrame {
 
       if(!exception){
         tickets.remove(iCurrentTicket);
-        JOptionPane.showMessageDialog(this, "The Ticket info has been deleted\n\n", "Info", JOptionPane.INFORMATION_MESSAGE, 
+        JOptionPane.showMessageDialog(this, "Ticket eliminado\n\n", "Info", JOptionPane.INFORMATION_MESSAGE, 
               new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Delete.png")));
         
         showTicket((iCurrentTicket>0)?--iCurrentTicket:iCurrentTicket);
         stateControls(States.STATE_RELOADED);
       }else{
-        JOptionPane.showMessageDialog(this, "Connection ERROR. Can't delete the Ticket Info\n\n", "Info", JOptionPane.ERROR_MESSAGE, 
+        JOptionPane.showMessageDialog(this, "Error de conexión. No fue posible borrar la información del Ticket\n\n", "Info", JOptionPane.ERROR_MESSAGE, 
               new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Disconnected.png")));
       }      
     }
@@ -1296,11 +1298,11 @@ public class Frame extends javax.swing.JFrame {
   private void find() {
     ArrayList<Ticket> ticketsthatmatch = new ArrayList<Ticket>();
     if(jRegEx.getText().trim().equals("")){
-      JOptionPane.showMessageDialog(this, "Enter the text to search", "Info", JOptionPane.ERROR_MESSAGE, 
+      JOptionPane.showMessageDialog(this, "Introduce el texto a buscar", "Info", JOptionPane.ERROR_MESSAGE, 
             new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Error.png")));  
       jRegEx.requestFocus();
     }else if(jWhere.getSelectedIndex()<2){
-      JOptionPane.showMessageDialog(this, "Select the field to perform the search ", "Info", JOptionPane.ERROR_MESSAGE, 
+      JOptionPane.showMessageDialog(this, "Selecciona el campo donde se realizará la búsqueda", "Info", JOptionPane.ERROR_MESSAGE, 
             new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Error.png")));
       jWhere.requestFocus();
     }else{
@@ -1319,11 +1321,11 @@ public class Frame extends javax.swing.JFrame {
         showTicket(0);
         stateControls(States.STATE_SEARCHED);
         
-        JOptionPane.showMessageDialog(this, tickets.size() + " Tickets match with the specified search data",
+        JOptionPane.showMessageDialog(this, tickets.size() + " Tickets coinciden con los datos de búsqueda",
                 "Info", JOptionPane.ERROR_MESSAGE, 
               new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Info.png")));
       }else{
-        JOptionPane.showMessageDialog(this, "No Tickets match with the specified search data", "Info", JOptionPane.ERROR_MESSAGE, 
+        JOptionPane.showMessageDialog(this, "Ningún Ticket coincide con los datos de búsqueda", "Info", JOptionPane.ERROR_MESSAGE, 
               new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Error.png")));
       }
     }    
@@ -1392,7 +1394,7 @@ public class Frame extends javax.swing.JFrame {
         jNew.setEnabled(true);
         jDownload.setEnabled(true);
         
-        setLabelStatus("Connected to the Tickets DB", "/shadow_support/Connected16.png");
+        setLabelStatus("Conectado a la BD Tickets", "/shadow_support/Connected16.png");
       break;
 
       case STATE_NEWED:
@@ -1404,7 +1406,7 @@ public class Frame extends javax.swing.JFrame {
         jCancel.setEnabled(true);
         jDownload.setEnabled(false);
 
-        setLabelStatus("New Ticket", "/shadow_support/New File16.png");
+        setLabelStatus("Nuevo Ticket", "/shadow_support/New File16.png");
       break;
 
       case STATE_SAVED:
@@ -1428,7 +1430,7 @@ public class Frame extends javax.swing.JFrame {
         } 
         
         stateRecordButtons();
-        setLabelStatus("Ticket saved", "/shadow_support/Save Close16.png");
+        setLabelStatus("Ticket guardado", "/shadow_support/Save Close16.png");
       break;
 
       case STATE_UPDATED:
@@ -1440,7 +1442,7 @@ public class Frame extends javax.swing.JFrame {
         jCancel.setEnabled(true);
         jDownload.setEnabled(false);
 
-        setLabelStatus("Updating Ticket ID " + jTicketid.getText(), "/shadow_support/Create New16.png");
+        setLabelStatus("Editando Ticket ID " + jTicketid.getText(), "/shadow_support/Create New16.png");
       break;
 
       case STATE_DELETED:
@@ -1463,7 +1465,7 @@ public class Frame extends javax.swing.JFrame {
         } 
         
         stateRecordButtons();
-        setLabelStatus("Ticket deleted", "/shadow_support/Edit16.png");
+        setLabelStatus("Ticket eliminado", "/shadow_support/Edit16.png");
       break;      
 
       case STATE_EXPORTED:
@@ -1487,7 +1489,7 @@ public class Frame extends javax.swing.JFrame {
         } 
         
         stateRecordButtons();
-        setLabelStatus("Data exported", "/shadow_support/Export16.png");
+        setLabelStatus("Datos exportados", "/shadow_support/Export16.png");
       break;
 
       case STATE_SEARCHED:
@@ -1511,7 +1513,7 @@ public class Frame extends javax.swing.JFrame {
         } 
         
         stateRecordButtons();
-        setLabelStatus("Tickets filtered by the field " + String.valueOf(jWhere.getSelectedItem()) 
+        setLabelStatus("Tickets filtrados por el campo " + String.valueOf(jWhere.getSelectedItem()) 
                 + " ( " + tickets.size() + " )", "/shadow_support/Filter16.png");
       break;
 
@@ -1535,7 +1537,7 @@ public class Frame extends javax.swing.JFrame {
         } 
         
         stateRecordButtons();
-        setLabelStatus("Showing Ticket: " + (iCurrentTicket+1) + " Ticket ID: " 
+        setLabelStatus("Mostrando Ticket: " + (iCurrentTicket+1) + " Ticket ID: " 
                 + jTicketid.getText(), "/shadow_support/Document16.png");
       break;
       
@@ -1560,7 +1562,7 @@ public class Frame extends javax.swing.JFrame {
         } 
         
         stateRecordButtons();
-        setLabelStatus("Tickets downloaded ( " + tickets.size() + " )", "/shadow_support/Download from the cloud16.png");
+        setLabelStatus("Tickets recuperados ( " + tickets.size() + " )", "/shadow_support/Download from the cloud16.png");
       break;
       
       case STATE_MOVED:
@@ -1584,7 +1586,7 @@ public class Frame extends javax.swing.JFrame {
         } 
         
         stateRecordButtons();
-        setLabelStatus("Showing Ticket: " + (iCurrentTicket+1) + " Ticket ID: " 
+        setLabelStatus("Mostrando Ticket: " + (iCurrentTicket+1) + " Ticket ID: " 
                 + jTicketid.getText(), "/shadow_support/Document16.png");
       break;
       
@@ -1595,7 +1597,7 @@ public class Frame extends javax.swing.JFrame {
         jSave.setEnabled(true);
         jCancel.setEnabled(true);
         jDownload.setEnabled(false);
-        setLabelStatus("New Ticket", "/shadow_support/New File16.png");
+        setLabelStatus("Nuevo Ticket", "/shadow_support/New File16.png");
       break;
       
       case STATE_RELOADED:
@@ -1619,7 +1621,7 @@ public class Frame extends javax.swing.JFrame {
         } 
         
         stateRecordButtons();
-        setLabelStatus("Showing Ticket: " + (iCurrentTicket+1) + " Ticket ID: " 
+        setLabelStatus("Mostrando Ticket: " + (iCurrentTicket+1) + " Ticket ID: " 
                 + jTicketid.getText(), "/shadow_support/Document16.png");
       break;
     }      
@@ -1862,7 +1864,7 @@ public class Frame extends javax.swing.JFrame {
     boolean exception = false;
     
     JFileChooser fileChooser = new JFileChooser();
-    fileChooser.setDialogTitle("Save as...");    
+    fileChooser.setDialogTitle("Guardar como...");    
         
     if(fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION){
       File fileCh = fileChooser.getSelectedFile();
@@ -1937,7 +1939,7 @@ public class Frame extends javax.swing.JFrame {
       }
       
       if(!exception){
-        JOptionPane.showMessageDialog(this, "The data has been exported to file: \n\n" + fileCh.getPath() + "\n\n", 
+        JOptionPane.showMessageDialog(this, "Los datos se han exportado al archivo: \n\n" + fileCh.getPath() + "\n\n", 
                 "Info", JOptionPane.INFORMATION_MESSAGE, 
               new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Export.png")));
         try {
