@@ -1719,7 +1719,7 @@ public class Frame extends javax.swing.JFrame {
       jSolutionartifactsharedSi.setSelected(false);
       jSolutionartifactsharedNo.setSelected(false);
     }else{
-      if(tickets.get(iTicketNum).getSolutionartifactshared().equals("Sí")){
+      if(tickets.get(iTicketNum).getSolutionartifactshared().equals("Yes")){
         jSolutionartifactsharedSi.setSelected(true);
         jSolutionartifactsharedNo.setSelected(false);
         jSolutionartifactsharedNA.setSelected(false);
@@ -1729,7 +1729,7 @@ public class Frame extends javax.swing.JFrame {
         jSolutionartifactsharedNA.setSelected(false);
       }
 
-      if(tickets.get(iTicketNum).getEscalationrequired().equals("Sí")){
+      if(tickets.get(iTicketNum).getEscalationrequired().equals("Yes")){
         jEscalationrequiredSi.setSelected(true);
         jEscalationrequiredNo.setSelected(false);
       }else{
@@ -1737,7 +1737,7 @@ public class Frame extends javax.swing.JFrame {
         jEscalationrequiredSi.setSelected(false);
       }
 
-      if(tickets.get(iTicketNum).getChangerequestneeded().equals("Sí")){
+      if(tickets.get(iTicketNum).getChangerequestneeded().equals("Yes")){
         jChangerequestneededSi.setSelected(true);
         jChangerequestneededNo.setSelected(false);
       }else{
@@ -1862,7 +1862,7 @@ public class Frame extends javax.swing.JFrame {
     boolean exception = false;
     
     JFileChooser fileChooser = new JFileChooser();
-    fileChooser.setDialogTitle("Guardar archivo como");    
+    fileChooser.setDialogTitle("Save as...");    
         
     if(fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION){
       File fileCh = fileChooser.getSelectedFile();
