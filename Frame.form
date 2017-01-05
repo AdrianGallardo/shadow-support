@@ -937,11 +937,14 @@
         <Component class="javax.swing.JComboBox" name="jWhere">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel&lt;String&gt;(new String[] { &quot;Search field&quot;, &quot;-&quot;, &quot;Ticket ID&quot;, &quot;Problem reported&quot;, &quot;Category&quot;, &quot;Reported date&quot;, &quot;Previous assigment group&quot;, &quot;Type of solution&quot;, &quot;Solved date&quot;, &quot;Solved by&quot;, &quot;Steps to solve it&quot;, &quot;Script used for solution&quot;, &quot;Other support teams&quot;, &quot;Resources contacted&quot;, &quot;Escalation process&quot; })" type="code"/>
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;String&gt;(new String[] { &quot;Search in...&quot;, &quot;-&quot;, &quot;Ticket ID&quot;, &quot;Problem reported&quot;, &quot;Category&quot;, &quot;Reported date&quot;, &quot;Previous assigment group&quot;, &quot;Type of solution&quot;, &quot;Solved date&quot;, &quot;Solved by&quot;, &quot;Steps to solve it&quot;, &quot;Script used for solution&quot;, &quot;Other support teams&quot;, &quot;Resources contacted&quot;, &quot;Escalation process&quot; })" type="code"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Search Field"/>
+            <Property name="toolTipText" type="java.lang.String" value="Search in..."/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jWhereActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;String&gt;()"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

@@ -706,9 +706,14 @@ public class Frame extends javax.swing.JFrame {
     });
     jToolBar2.add(jRegEx);
 
-    jWhere.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Search field", "-", "Ticket ID", "Problem reported", "Category", "Reported date", "Previous assigment group", "Type of solution", "Solved date", "Solved by", "Steps to solve it", "Script used for solution", "Other support teams", "Resources contacted", "Escalation process" }));
-    jWhere.setToolTipText("Search Field");
+    jWhere.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Search in...", "-", "Ticket ID", "Problem reported", "Category", "Reported date", "Previous assigment group", "Type of solution", "Solved date", "Solved by", "Steps to solve it", "Script used for solution", "Other support teams", "Resources contacted", "Escalation process" }));
+    jWhere.setToolTipText("Search in...");
     jWhere.setEnabled(false);
+    jWhere.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jWhereActionPerformed(evt);
+      }
+    });
     jToolBar2.add(jWhere);
 
     jFind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Search.png"))); // NOI18N
@@ -985,6 +990,10 @@ public class Frame extends javax.swing.JFrame {
     find();
   }//GEN-LAST:event_jFindActionPerformed
 
+  private void jWhereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jWhereActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_jWhereActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1059,14 +1068,11 @@ public class Frame extends javax.swing.JFrame {
   private javax.swing.JButton jSave;
   private javax.swing.JTextField jScriptusedforsolution;
   private javax.swing.JScrollPane jScrollPane1;
-  private javax.swing.JScrollPane jScrollPane10;
   private javax.swing.JScrollPane jScrollPane2;
   private javax.swing.JScrollPane jScrollPane3;
   private javax.swing.JScrollPane jScrollPane4;
   private javax.swing.JScrollPane jScrollPane5;
   private javax.swing.JScrollPane jScrollPane6;
-  private javax.swing.JScrollPane jScrollPane8;
-  private javax.swing.JScrollPane jScrollPane9;
   private javax.swing.JToolBar.Separator jSeparator1;
   private javax.swing.JToolBar.Separator jSeparator2;
   private javax.swing.JToolBar.Separator jSeparator5;
@@ -1848,7 +1854,8 @@ public class Frame extends javax.swing.JFrame {
         sTextField = ticket.getChangerequestneeded();
       break;      
     }
-    return sTextField;
+    
+    return (sTextField==null)? "": sTextField;
   }
 
   private void export() {
