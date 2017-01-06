@@ -43,7 +43,7 @@ import org.apache.poi.ss.usermodel.Row;
  * @author AGALLARD
  */
 public class Frame extends javax.swing.JFrame {
-  private final String sUri = "mongodb://agallard:Diciembre2016$@ds161497.mlab.com:61497/shadow_support";
+  private final String sUri = "";
   private final ArrayList<Ticket> tickets = new ArrayList<Ticket>();
   private final MongoClientURI uri = new MongoClientURI(sUri);
   private MongoClient mongo = null;
