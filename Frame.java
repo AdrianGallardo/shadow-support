@@ -52,6 +52,8 @@ public class Frame extends javax.swing.JFrame {
   private boolean bConnected = false;
   
   private void loadDocuments(int iMaxNumDoc, int iCurrentTicket) { 
+    jRecords.setIcon(null);
+    jStatus.setIcon(null);
     try {
       mongo = new MongoClient(uri);
       DB db = mongo.getDB("shadow_support");
@@ -87,17 +89,16 @@ public class Frame extends javax.swing.JFrame {
       }
       
       bDownloaded = true;
-      this.iCurrentTicket = iCurrentTicket;
-      showTicket(iCurrentTicket);
-      stateControls(States.STATE_DOWNLOADED);
-      JOptionPane.showMessageDialog(this, "Se recuperó la información de " + tickets.size() + " Tickets", "Info", JOptionPane.INFORMATION_MESSAGE, 
-            new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Download from the Cloud.png")));
-      
+      this.iCurrentTicket = iCurrentTicket;      
+      showTicket(iCurrentTicket); 
+      stateControls(States.STATE_DOWNLOADED);           
     } catch (UnknownHostException ex) {
       Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
     } finally{
       mongo.close();
-    }    
+      JOptionPane.showMessageDialog(this, "Se recuperó la información de " + tickets.size() + " Tickets", "Info", JOptionPane.INFORMATION_MESSAGE, 
+            new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Download from the Cloud.png")));
+    }        
   }    
 
      /**
@@ -145,11 +146,13 @@ public class Frame extends javax.swing.JFrame {
     jReporteddate = new javax.swing.JFormattedTextField();
     jLabel17 = new javax.swing.JLabel();
     jCategory = new javax.swing.JTextField();
+    jLabel1 = new javax.swing.JLabel();
+    jLabel2 = new javax.swing.JLabel();
     jPanel3 = new javax.swing.JPanel();
     jScrollPane1 = new javax.swing.JScrollPane();
     jStepstosolveit = new javax.swing.JTextArea();
     jLabel18 = new javax.swing.JLabel();
-    jAveragehrs = new javax.swing.JSpinner();
+    jAveragehrs = new javax.swing.JFormattedTextField();
     jPanel4 = new javax.swing.JPanel();
     jLabel7 = new javax.swing.JLabel();
     jScriptusedforsolution = new javax.swing.JTextField();
@@ -194,9 +197,10 @@ public class Frame extends javax.swing.JFrame {
     jNext = new javax.swing.JButton();
     jLast = new javax.swing.JButton();
     jConnect = new javax.swing.JButton();
-    jRecords = new javax.swing.JLabel();
     jPanel1 = new javax.swing.JPanel();
-    jLabel1 = new javax.swing.JLabel();
+    jStatus = new javax.swing.JLabel();
+    jToolBar1 = new javax.swing.JToolBar();
+    jRecords = new javax.swing.JLabel();
     jMenuBar1 = new javax.swing.JMenuBar();
     jHelp = new javax.swing.JMenu();
     jAbout = new javax.swing.JMenuItem();
@@ -251,7 +255,7 @@ public class Frame extends javax.swing.JFrame {
 
     jLabel14.setText("Fecha de Resolución");
 
-    jSolveddate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d/M/yyyy"))));
+    jSolveddate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
     jSolveddate.setDisabledTextColor(java.awt.SystemColor.textInactiveText);
     jSolveddate.setEnabled(false);
 
@@ -262,7 +266,7 @@ public class Frame extends javax.swing.JFrame {
 
     jLabel16.setText("Fecha de Reporte");
 
-    jReporteddate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d/M/yyyy"))));
+    jReporteddate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
     jReporteddate.setDisabledTextColor(java.awt.SystemColor.textInactiveText);
     jReporteddate.setEnabled(false);
 
@@ -270,11 +274,12 @@ public class Frame extends javax.swing.JFrame {
 
     jCategory.setDisabledTextColor(java.awt.SystemColor.textInactiveText);
     jCategory.setEnabled(false);
-    jCategory.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jCategoryActionPerformed(evt);
-      }
-    });
+
+    jLabel1.setText("(DD/MM/YYYY)");
+    jLabel1.setEnabled(false);
+
+    jLabel2.setText("(DD/MM/YYYY)");
+    jLabel2.setEnabled(false);
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
@@ -289,7 +294,10 @@ public class Frame extends javax.swing.JFrame {
               .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
             .addGap(18, 18, 18)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-              .addComponent(jReporteddate, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jReporteddate, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1))
               .addComponent(jPreviousassigmentgroup, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)))
           .addGroup(jPanel2Layout.createSequentialGroup()
             .addComponent(jLabel17)
@@ -307,7 +315,10 @@ public class Frame extends javax.swing.JFrame {
                   .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-              .addComponent(jSolveddate, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jSolveddate, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2))
               .addComponent(jSolvedby, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
               .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)))
           .addGroup(jPanel2Layout.createSequentialGroup()
@@ -338,7 +349,8 @@ public class Frame extends javax.swing.JFrame {
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jReporteddate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jLabel16))
+          .addComponent(jLabel16)
+          .addComponent(jLabel1))
         .addGap(14, 14, 14)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jPreviousassigmentgroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -350,7 +362,8 @@ public class Frame extends javax.swing.JFrame {
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jSolveddate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jLabel14))
+          .addComponent(jLabel14)
+          .addComponent(jLabel2))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jSolvedby, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -368,8 +381,7 @@ public class Frame extends javax.swing.JFrame {
 
     jLabel18.setText("Promedio de horas empleadas");
 
-    jAveragehrs.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-    jAveragehrs.setToolTipText("");
+    jAveragehrs.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
     jAveragehrs.setEnabled(false);
 
     javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -383,8 +395,8 @@ public class Frame extends javax.swing.JFrame {
           .addGroup(jPanel3Layout.createSequentialGroup()
             .addGap(6, 6, 6)
             .addComponent(jLabel18)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(jAveragehrs, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jAveragehrs, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(0, 0, Short.MAX_VALUE)))
         .addContainerGap())
     );
@@ -399,8 +411,6 @@ public class Frame extends javax.swing.JFrame {
           .addComponent(jAveragehrs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addContainerGap(26, Short.MAX_VALUE))
     );
-
-    jLabel18.getAccessibleContext().setAccessibleName("Promedio de horas empleadas");
 
     jTabContacts.addTab("Pasos para resolver el Ticket", jPanel3);
 
@@ -701,6 +711,7 @@ public class Frame extends javax.swing.JFrame {
 
     jRegEx.setToolTipText("Texto a buscar (RegEx)");
     jRegEx.setEnabled(false);
+    jRegEx.setPreferredSize(new java.awt.Dimension(100, 28));
     jRegEx.addKeyListener(new java.awt.event.KeyAdapter() {
       public void keyPressed(java.awt.event.KeyEvent evt) {
         jRegExKeyPressed(evt);
@@ -708,14 +719,9 @@ public class Frame extends javax.swing.JFrame {
     });
     jToolBar2.add(jRegEx);
 
-    jWhere.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Search in...", "-", "Ticket ID", "Problem reported", "Category", "Reported date", "Previous assigment group", "Type of solution", "Solved date", "Solved by", "Steps to solve it", "Script used for solution", "Other support teams", "Resources contacted", "Escalation process" }));
+    jWhere.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Buscar en...", "-", "Ticket ID", "Problema Reportado", "Categoria", "Fecha de Reporte", "Grupo asignado previamente", "Tipo de Solución", "Fecha de Resolución", "Resuelto por", "Pasos para resolver el Ticket", "Script, Query o Herramienta utilizada", "Otros equipos de soporte contactados", "Recursos de Grupo BIMBO contactados", "Proceso de Escalamiento aplicado" }));
     jWhere.setToolTipText("Buscar en...");
     jWhere.setEnabled(false);
-    jWhere.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jWhereActionPerformed(evt);
-      }
-    });
     jToolBar2.add(jWhere);
 
     jFind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Search.png"))); // NOI18N
@@ -746,7 +752,7 @@ public class Frame extends javax.swing.JFrame {
     jToolBar2.add(jExport);
 
     jDownload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Download from the Cloud.png"))); // NOI18N
-    jDownload.setToolTipText("Descargar la información de los Tickets");
+    jDownload.setToolTipText("Descargar la información de todos los Tickets");
     jDownload.setEnabled(false);
     jDownload.setFocusable(false);
     jDownload.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -819,14 +825,11 @@ public class Frame extends javax.swing.JFrame {
       }
     });
 
-    jRecords.setText("( - de - Registros)");
-    jRecords.setEnabled(false);
-
     jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-    jLabel1.setFont(new java.awt.Font("sansserif", 0, 10)); // NOI18N
-    jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Disconnected16.png"))); // NOI18N
-    jLabel1.setText("Disconnected");
+    jStatus.setFont(new java.awt.Font("sansserif", 0, 10)); // NOI18N
+    jStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Disconnected16.png"))); // NOI18N
+    jStatus.setText("Desconectado");
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
@@ -834,13 +837,23 @@ public class Frame extends javax.swing.JFrame {
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(jLabel1)
+        .addComponent(jStatus)
         .addContainerGap())
     );
     jPanel1Layout.setVerticalGroup(
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jLabel1)
+      .addComponent(jStatus)
     );
+
+    jToolBar1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+    jToolBar1.setFloatable(false);
+    jToolBar1.setBorderPainted(false);
+    jToolBar1.setFocusable(false);
+
+    jRecords.setText(" - de - registros");
+    jRecords.setToolTipText("");
+    jRecords.setEnabled(false);
+    jToolBar1.add(jRecords);
 
     jHelp.setText("Ayuda");
 
@@ -866,9 +879,9 @@ public class Frame extends javax.swing.JFrame {
           .addComponent(jTabContacts)
           .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
           .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-            .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 986, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(63, 63, 63)
-            .addComponent(jRecords)
+            .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 1093, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(30, 30, 30)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jConnect)))
         .addContainerGap())
@@ -880,10 +893,8 @@ public class Frame extends javax.swing.JFrame {
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
           .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
           .addComponent(jConnect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-            .addComponent(jRecords)
-            .addGap(14, 14, 14)))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+          .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGap(18, 18, 18)
         .addComponent(jTabContacts, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -944,10 +955,6 @@ public class Frame extends javax.swing.JFrame {
     export();
   }//GEN-LAST:event_jExportActionPerformed
 
-  private void jCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCategoryActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_jCategoryActionPerformed
-
   private void jDuplicateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDuplicateActionPerformed
     duplicate();
   }//GEN-LAST:event_jDuplicateActionPerformed
@@ -992,10 +999,6 @@ public class Frame extends javax.swing.JFrame {
     find();
   }//GEN-LAST:event_jFindActionPerformed
 
-  private void jWhereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jWhereActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_jWhereActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -1014,7 +1017,7 @@ public class Frame extends javax.swing.JFrame {
   private javax.swing.ButtonGroup buttonGroup2;
   private javax.swing.ButtonGroup buttonGroup3;
   private javax.swing.JMenuItem jAbout;
-  private javax.swing.JSpinner jAveragehrs;
+  private javax.swing.JFormattedTextField jAveragehrs;
   private javax.swing.JButton jCancel;
   private javax.swing.JTextField jCategory;
   private javax.swing.JRadioButton jChangerequestneededNo;
@@ -1042,6 +1045,7 @@ public class Frame extends javax.swing.JFrame {
   private javax.swing.JLabel jLabel16;
   private javax.swing.JLabel jLabel17;
   private javax.swing.JLabel jLabel18;
+  private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;
   private javax.swing.JLabel jLabel4;
   private javax.swing.JLabel jLabel5;
@@ -1083,9 +1087,11 @@ public class Frame extends javax.swing.JFrame {
   private javax.swing.JRadioButton jSolutionartifactsharedSi;
   private javax.swing.JTextField jSolvedby;
   private javax.swing.JFormattedTextField jSolveddate;
+  private javax.swing.JLabel jStatus;
   private javax.swing.JTextArea jStepstosolveit;
   private javax.swing.JTabbedPane jTabContacts;
   private javax.swing.JTextField jTicketid;
+  private javax.swing.JToolBar jToolBar1;
   private javax.swing.JToolBar jToolBar2;
   private javax.swing.JTextArea jTypeofsolution;
   private javax.swing.JComboBox<String> jWhere;
@@ -1126,7 +1132,7 @@ public class Frame extends javax.swing.JFrame {
     sPreviousassigmentgroup = jPreviousassigmentgroup.getText().trim();
     sTypeofsolution = jTypeofsolution.getText().trim();
     sStepstosolveit = jStepstosolveit.getText().trim();
-    sAveragehrstosolveit = jAveragehrs.getValue().toString();
+    sAveragehrstosolveit = jAveragehrs.getText().trim();
     sScriptusedforsolution = jScriptusedforsolution.getText().trim();
     if(jSolutionartifactsharedNA.isSelected()){
       sSolutionartifactshared = "N/A";
@@ -1196,7 +1202,12 @@ public class Frame extends javax.swing.JFrame {
                                  sResourcescontacted, sEscalationrequired, sEscalationprocess,
                                  sChangerequestneeded, dSolveddate, dReporteddate, sSolvedby,
                                  true, false, false));
-          showTicket(++iCurrentTicket);
+          if(tickets.size()>1){
+            showTicket(++iCurrentTicket);
+          }else{
+            showTicket(iCurrentTicket);
+          }
+          
         }else{
           for(int i=0; i<tickets.size(); i++){
             if(tickets.get(i).getTicketid().equals(sTicketid)){
@@ -1289,6 +1300,7 @@ public class Frame extends javax.swing.JFrame {
 
   private void newDocument() {
     stateControls(States.STATE_NEWED);
+    jTicketid.requestFocus();
   }
 
   private void editDocument() {
@@ -1324,6 +1336,7 @@ public class Frame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, tickets.size() + " Tickets coinciden con los datos de búsqueda",
                 "Info", JOptionPane.ERROR_MESSAGE, 
               new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Info.png")));
+        focusOn(jWhere.getSelectedIndex());
       }else{
         JOptionPane.showMessageDialog(this, "Ningún Ticket coincide con los datos de búsqueda", "Info", JOptionPane.ERROR_MESSAGE, 
               new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Error.png")));
@@ -1333,7 +1346,8 @@ public class Frame extends javax.swing.JFrame {
 
   private void cancel() {
     cleanAllBoxes();    
-    showTicket(iCurrentTicket);
+    if(tickets.size()>0)
+      showTicket(iCurrentTicket);
     stateControls(States.STATE_CANCELLED);
   }
   
@@ -1515,6 +1529,8 @@ public class Frame extends javax.swing.JFrame {
         stateRecordButtons();
         setLabelStatus("Tickets filtrados por el campo " + String.valueOf(jWhere.getSelectedItem()) 
                 + " ( " + tickets.size() + " )", "/shadow_support/Filter16.png");
+        
+        jRecords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shadow_support/Filter16.png")));
       break;
 
       case STATE_CANCELLED:
@@ -1537,8 +1553,10 @@ public class Frame extends javax.swing.JFrame {
         } 
         
         stateRecordButtons();
-        setLabelStatus("Mostrando Ticket: " + (iCurrentTicket+1) + " Ticket ID: " 
-                + jTicketid.getText(), "/shadow_support/Document16.png");
+        if(tickets.size()>0)
+          setLabelStatus("Mostrando Ticket: " + (iCurrentTicket+1) + " Ticket ID: " 
+                  + jTicketid.getText(), "/shadow_support/Document16.png");
+        
       break;
       
       case STATE_DOWNLOADED:
@@ -1563,6 +1581,8 @@ public class Frame extends javax.swing.JFrame {
         
         stateRecordButtons();
         setLabelStatus("Tickets recuperados ( " + tickets.size() + " )", "/shadow_support/Download from the cloud16.png");
+        
+        jRecords.setIcon(null);
       break;
       
       case STATE_MOVED:
@@ -1588,6 +1608,7 @@ public class Frame extends javax.swing.JFrame {
         stateRecordButtons();
         setLabelStatus("Mostrando Ticket: " + (iCurrentTicket+1) + " Ticket ID: " 
                 + jTicketid.getText(), "/shadow_support/Document16.png");
+        jRegEx.requestFocus();
       break;
       
       case STATE_DUPLICATED:
@@ -1673,6 +1694,7 @@ public class Frame extends javax.swing.JFrame {
     jPreviousassigmentgroup.setText("");
     jTypeofsolution.setText("");
     jStepstosolveit.setText("");
+    jAveragehrs.setText("");
     jScriptusedforsolution.setText("");
     jSolutionartifactsharedSi.setSelected(false);
     jSolutionartifactsharedNo.setSelected(false);
@@ -1696,10 +1718,7 @@ public class Frame extends javax.swing.JFrame {
     jPreviousassigmentgroup.setText(tickets.get(iTicketNum).getPreviousassigmentgroup());
     jTypeofsolution.setText(tickets.get(iTicketNum).getTypeofsolution());
     jStepstosolveit.setText(tickets.get(iTicketNum).getStepstosolveit());
-    int iAveragehrs = 1;
-    if(tickets.get(iTicketNum).getAveragehrstosolveit()!=null)
-      iAveragehrs = Integer.valueOf(tickets.get(iTicketNum).getAveragehrstosolveit());
-    jAveragehrs.setValue(iAveragehrs);
+    jAveragehrs.setText(tickets.get(iTicketNum).getAveragehrstosolveit());
     jScriptusedforsolution.setText(tickets.get(iTicketNum).getScriptusedforsolution());        
     jOthersupportteams.setText(tickets.get(iTicketNum).getOthersupportteams());
     jResourcescontacted.setText(tickets.get(iTicketNum).getResourcescontacted());    
@@ -1752,22 +1771,35 @@ public class Frame extends javax.swing.JFrame {
   }
 
   private void stateRecordButtons() {
-    if(iCurrentTicket==0&&tickets.size()!=1){
+    if(iCurrentTicket==0&&tickets.isEmpty()){
+      jFirst.setEnabled(false);
+      jPrevious.setEnabled(false);      
+      jNext.setEnabled(false);
+      jLast.setEnabled(false);
+      jRecords.setText(" - de - registros");
+    }else if(iCurrentTicket==0&&tickets.size()==1){
+      jFirst.setEnabled(false);
+      jPrevious.setEnabled(false);      
+      jNext.setEnabled(false);
+      jLast.setEnabled(false);
+      jRecords.setText((iCurrentTicket + 1) + " de " + tickets.size() + " registros");
+    }else if(iCurrentTicket==0&&tickets.size()>1){
       jNext.setEnabled(true);
       jLast.setEnabled(true);
+      jRecords.setText((iCurrentTicket + 1) + " de " + tickets.size() + " registros");
     }
     else if(iCurrentTicket<(tickets.size()-1)){
       jFirst.setEnabled(true);
       jPrevious.setEnabled(true);      
       jNext.setEnabled(true);
       jLast.setEnabled(true);
+      jRecords.setText((iCurrentTicket + 1) + " de " + tickets.size() + " registros");
     }    
     else if(iCurrentTicket==(tickets.size()-1)&&tickets.size()!=1){
       jFirst.setEnabled(true);
       jPrevious.setEnabled(true); 
-    }    
-    jRecords.setText((iCurrentTicket + 1) + " of " + tickets.size() + " registers");
-    
+      jRecords.setText((iCurrentTicket + 1) + " de " + tickets.size() + " registros");
+    }           
   }
 
   private void connect() {
@@ -1786,7 +1818,7 @@ public class Frame extends javax.swing.JFrame {
       } finally{
         mongo.close();
       }
-    }
+    } 
   }
   
   public String getTextTicket(Ticket ticket, int iOption) {
@@ -1831,29 +1863,17 @@ public class Frame extends javax.swing.JFrame {
       case 11:
         sTextField = ticket.getScriptusedforsolution();
       break;
-
-      case 12:
-        sTextField = ticket.getSolutionartifactshared();
-      break;
       
-      case 13:
+      case 12:
         sTextField = ticket.getOthersupportteams();
       break;
       
-      case 14:
+      case 13:
         sTextField = ticket.getResourcescontacted();
       break;
-      
-      case 15:
-        sTextField = ticket.getEscalationrequired();
-      break;
 
-      case 16:
+      case 14:
         sTextField = ticket.getEscalationprocess();
-      break;      
-
-      case 17:
-        sTextField = ticket.getChangerequestneeded();
       break;      
     }
     
@@ -1963,7 +1983,64 @@ public class Frame extends javax.swing.JFrame {
   }
   
   private void setLabelStatus(String sText, String sIconImage){
-    jLabel1.setText(sText);
-    jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(sIconImage))); 
+    jStatus.setText(sText);
+    jStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource(sIconImage))); 
+  }
+
+  private void focusOn(int iOption) {
+    switch(iOption){
+      case 2:
+        jTicketid.requestFocus();
+      break;
+      
+      case 3:
+        jProblemreported.requestFocus();
+      break;
+      
+      case 4:
+        jCategory.requestFocus();
+      break;
+      
+      case 5:
+        jReporteddate.requestFocus();
+      break;
+      
+      case 6:
+        jPreviousassigmentgroup.requestFocus();
+      break;
+      
+      case 7:
+        jTypeofsolution.requestFocus();
+      break;
+      
+      case 8:
+        jSolveddate.requestFocus();
+      break;
+      
+      case 9:
+        jSolvedby.requestFocus();
+      break;
+      
+      case 10:
+        jStepstosolveit.requestFocus();
+      break;
+      
+      case 11:
+        jScriptusedforsolution.requestFocus();
+      break;
+      
+      case 12:
+        jOthersupportteams.requestFocus();
+      break;
+      
+      case 13:
+        jResourcescontacted.requestFocus();
+      break;
+
+      case 14:
+        jEscalationprocess.requestFocus();
+      break;      
+    }
   }
 }
+
